@@ -1,1 +1,1097 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="مرکز آموزشی و توانبخشی نگین - با اراده می‌توان، با همت می‌سازیم. خدمات آموزش، توانبخشی، هنر و خلاقیت برای کودکان دارای معلولیت در کابل، افغانستان.">
+    <meta name="theme-color" content="#0057B8">
+    <meta name="author" content="مرکز آموزشی و توانبخشی نگین">
+    <title>مرکز آموزشی و توانبخشی نگین | با اراده می‌توان، با همت می‌سازیم</title>
+
+    <!-- فونت استاندارد -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0057B8;
+            --primary-dark: #123B7A;
+            --green: #4CAF00;
+            --magenta: #E91E63;
+            --gold: #F4B400;
+            --white: #FFFFFF;
+            --bg: #F4F7FA;
+            --text: #1e293b;
+            --muted: #5A6A7A;
+            --border: #d1c5b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.75;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .skip-link {
+            position: absolute; top: -60px; right: 16px;
+            background: var(--gold); color: var(--primary-dark);
+            padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 8px;
+            font-weight: 600; transition: top 0.3s;
+        }
+        .skip-link:focus { top: 0; }
+        *:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        .section-padding { padding: 60px 0; }
+
+        /* ========== Header ========== */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; gap: 12px; min-height: 64px;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+        .brand-logo { height: 56px; width: auto; border-radius: 8px; flex-shrink: 0; }
+        .brand-text { display: flex; flex-direction: column; min-width: 0; }
+        .institution-name { font-size: 0.65rem; color: var(--green); font-weight: 500; }
+        .center-name { font-size: 1.15rem; font-weight: 900; color: var(--primary); margin: 1px 0; line-height: 1.3; }
+        .slogan-header { font-size: 0.75rem; color: var(--magenta); font-weight: 700; }
+
+        nav ul { display: flex; list-style: none; gap: 16px; align-items: center; }
+        nav a { font-weight: 600; color: var(--primary-dark); transition: color 0.25s; font-size: 0.95rem; }
+
+        .mobile-menu-btn {
+            display: none; background: none; border: none; cursor: pointer;
+            width: 48px; height: 48px; min-width: 48px; min-height: 48px;
+            z-index: 1001; align-items: center; justify-content: center; border-radius: 8px;
+        }
+        .mobile-menu-btn .hamburger {
+            width: 26px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .mobile-menu-btn .hamburger span {
+            display: block; width: 100%; height: 3px; background: #0057B8; border-radius: 3px; transition: 0.3s;
+        }
+        .mobile-menu-btn.active .hamburger span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .mobile-menu-btn.active .hamburger span:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.active .hamburger span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        /* ========== Hero ========== */
+        .hero-slider {
+            position: relative; width: 100%; height: 480px; overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        .slider-container { position: relative; width: 100%; height: 100%; }
+        .slide {
+            position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s;
+            display: flex; align-items: center; justify-content: center; pointer-events: none;
+        }
+        .slide.active { opacity: 1; pointer-events: auto; }
+        .slide::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,20,50,0.55); z-index: 1;
+        }
+        .slide-image {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 0;
+        }
+        .slide-content {
+            position: relative; z-index: 2; text-align: center; color: #fff;
+            max-width: 90%; padding: 0 12px;
+        }
+        .slide-content h1 {
+            font-size: 1.9rem; margin-bottom: 12px; font-weight: 900;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.45); line-height: 1.3;
+        }
+        .slide-content p {
+            font-size: 1rem; margin-bottom: 20px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.92); color: var(--primary);
+            border: none; width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+            border-radius: 50%; cursor: pointer; font-size: 1.1rem; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .slider-btn.prev { right: 10px; }
+        .slider-btn.next { left: 10px; }
+
+        .slider-dots {
+            position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255,255,255,0.5); border: none; cursor: pointer;
+        }
+        .dot.active { background: var(--gold); transform: scale(1.3); }
+
+        .btn {
+            display: inline-block; padding: 12px 24px; border-radius: 50px;
+            font-weight: 700; font-family: inherit; font-size: 0.95rem;
+            border: none; cursor: pointer; margin: 6px; min-height: 48px;
+            transition: 0.25s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        .btn-gold { background: var(--gold); color: #111; }
+        .btn-green { background: var(--green); color: #fff; }
+
+        .section-title { text-align: center; margin-bottom: 32px; }
+        .section-title h2 {
+            font-size: 1.7rem; color: var(--primary); position: relative; display: inline-block;
+        }
+        .section-title h2::after {
+            content: ''; display: block; width: 48px; height: 3px;
+            background: var(--gold); margin: 8px auto 0; border-radius: 2px;
+        }
+        .section-title p { color: var(--muted); max-width: 560px; margin: 10px auto 0; font-size: 0.95rem; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+
+        .card {
+            background: var(--white); border-radius: 14px; padding: 20px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06); border-top: 4px solid var(--primary);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-3px); }
+        .card i { font-size: 1.8rem; margin-bottom: 10px; color: var(--primary); }
+
+        /* ========== Gallery (Optimized) ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e5e7eb;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            color: #fff;
+            padding: 24px 12px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .caption { opacity: 1; }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92);
+            display: none; align-items: center; justify-content: center;
+            z-index: 9999; padding: 16px;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 100%; max-height: 90vh;
+            border-radius: 8px; object-fit: contain;
+        }
+        .lightbox-close, .lightbox-nav {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            color: #fff; border: none;
+            width: 48px; height: 48px; border-radius: 50%;
+            font-size: 1.4rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lightbox-close { top: 16px; left: 16px; }
+        .lightbox-prev { right: 16px; top: 50%; transform: translateY(-50%); }
+        .lightbox-next { left: 16px; top: 50%; transform: translateY(-50%); }
+
+        /* ========== Art Section ========== */
+        .art-section { background: #f7f3eb; }
+        .tabs {
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+            border-bottom: 2px solid var(--border); padding-bottom: 6px; justify-content: center;
+        }
+        .tab-btn {
+            background: transparent; border: none; padding: 10px 16px;
+            border-radius: 20px 20px 0 0; font-weight: 600; color: var(--muted);
+            cursor: pointer; font-family: inherit; font-size: 0.9rem; min-height: 44px;
+        }
+        .tab-btn.active { background: var(--primary); color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .color-picker { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; justify-content: center; }
+        .color-picker button {
+            width: 40px; height: 40px; min-width: 40px; min-height: 40px;
+            border-radius: 50%; border: 3px solid #ccc; cursor: pointer;
+        }
+        .color-picker button.active { border-color: var(--gold); }
+
+        .canvas-wrapper {
+            border: 2px solid var(--border); border-radius: 12px; overflow: hidden;
+            background: #fff; touch-action: none; max-width: 100%;
+        }
+        .canvas-wrapper canvas { display: block; width: 100%; max-width: 100%; background: #fff; }
+
+        .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; justify-content: center; }
+        .toolbar button {
+            padding: 10px 16px; border: none; border-radius: 20px; font-weight: 600;
+            font-family: inherit; font-size: 0.85rem; cursor: pointer; min-height: 44px;
+        }
+        .btn-clear { background: #e74c3c; color: #fff; }
+        .btn-download { background: var(--primary); color: #fff; }
+        .btn-undo { background: #d4a373; color: #fff; }
+
+        .piano { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+        .piano .key {
+            width: 32px; height: 80px; border-radius: 6px 6px 3px 3px;
+            border: 2px solid #333; cursor: pointer; display: flex;
+            align-items: flex-end; justify-content: center; padding-bottom: 6px;
+            font-weight: 700; color: #fff; font-size: 0.6rem; min-width: 32px; user-select: none;
+        }
+        .key-do { background: #e74c3c; } .key-re { background: #e67e22; }
+        .key-mi { background: #f1c40f; } .key-fa { background: #2ecc71; }
+        .key-sol { background: #3498db; } .key-la { background: #9b59b6; }
+        .key-si { background: #1abc9c; }
+
+        .record-box {
+            background: #f8fafc; border: 2px dashed var(--border);
+            border-radius: 14px; padding: 18px; text-align: center; margin-top: 18px;
+        }
+        .record-status {
+            font-size: 0.95rem; font-weight: 600; color: var(--primary);
+            margin: 10px 0; min-height: 28px;
+        }
+        .record-controls {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px;
+        }
+        .record-controls button {
+            padding: 12px 20px; border: none; border-radius: 25px;
+            font-weight: 700; font-family: inherit; font-size: 0.9rem;
+            cursor: pointer; min-height: 48px; min-width: 110px;
+        }
+        .btn-record { background: #e74c3c; color: #fff; }
+        .btn-record.recording { background: #c0392b; animation: pulse 1.2s infinite; }
+        .btn-play-rec { background: var(--primary); color: #fff; }
+        .btn-play-rec:disabled { opacity: 0.45; cursor: not-allowed; }
+        .btn-stop-rec { background: #64748b; color: #fff; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+
+        .memory-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+            max-width: 340px; margin: 12px auto;
+        }
+        .mem-card {
+            aspect-ratio: 1; background: var(--primary); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; cursor: pointer; color: #fff; border: 2px solid var(--border);
+            user-select: none; min-height: 60px;
+        }
+        .mem-card.flipped { background: #fcfaf7; color: var(--primary); border-color: var(--gold); }
+        .mem-card.matched { background: #2ecc71; color: #fff; border-color: #2ecc71; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.95rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 14px; border: 1px solid #cdd5df;
+            border-radius: 10px; font-family: inherit; font-size: 16px;
+            min-height: 48px;
+        }
+        .required { color: var(--magenta); }
+
+        .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+        .contact-item i { color: var(--gold); margin-top: 4px; font-size: 1.2rem; }
+
+        footer { background: var(--primary-dark); color: #e8eef5; padding: 45px 0 18px; }
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px; margin-bottom: 28px;
+        }
+        .footer-col h3 { color: var(--gold); margin-bottom: 12px; font-size: 1.1rem; }
+        .footer-col a, .footer-col p { color: #c5d0dc; display: block; margin: 6px 0; font-size: 0.9rem; }
+        .footer-col a:hover { color: var(--gold); }
+        .copyright {
+            text-align: center; padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.8rem; opacity: 0.75;
+        }
+
+        /* ========== Responsive - Android Optimized ========== */
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: flex; }
+            .header-inner { flex-direction: row-reverse; }
+            nav ul {
+                display: none; flex-direction: column; position: absolute;
+                top: 100%; right: 0; left: 0; background: #fff;
+                padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); gap: 4px; z-index: 999;
+            }
+            nav ul.active { display: flex; }
+            nav a {
+                display: block; padding: 14px 16px; font-size: 1rem;
+                border-radius: 8px; min-height: 48px;
+            }
+
+            .hero-slider { height: 420px; }
+            .slide-content h1 { font-size: 1.5rem; }
+            .slide-content p { font-size: 0.95rem; }
+            .brand-logo { height: 48px; }
+            .center-name { font-size: 1.05rem; }
+            .institution-name { font-size: 0.6rem; }
+            .section-padding { padding: 45px 0; }
+            .section-title h2 { font-size: 1.5rem; }
+
+            .piano .key { width: 30px; height: 72px; font-size: 0.55rem; }
+            .memory-grid { max-width: 300px; gap: 6px; }
+            .mem-card { font-size: 1.4rem; }
+            .gallery-item .caption { opacity: 1; font-size: 0.8rem; padding: 16px 10px 10px; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 15px; }
+            .container { padding: 0 12px; }
+            .header-inner { padding: 8px 0; min-height: 56px; }
+            .brand-logo { height: 44px; }
+            .center-name { font-size: 0.95rem; }
+            .slogan-header { font-size: 0.7rem; }
+            .institution-name { display: none; }
+
+            .hero-slider { height: 360px; }
+            .slide-content h1 { font-size: 1.3rem; }
+            .slide-content p { font-size: 0.9rem; }
+            .slider-btn { width: 40px; height: 40px; }
+            .slider-btn.prev { right: 6px; }
+            .slider-btn.next { left: 6px; }
+
+            .btn {
+                display: block; width: 100%; max-width: 280px; margin: 8px auto;
+                text-align: center; padding: 14px 20px;
+            }
+
+            .section-title h2 { font-size: 1.35rem; }
+            .card { padding: 16px; }
+
+            .tabs { gap: 4px; }
+            .tab-btn { padding: 10px 12px; font-size: 0.85rem; flex: 1; text-align: center; }
+
+            .color-picker button { width: 36px; height: 36px; }
+            .piano .key { width: 28px; height: 68px; }
+            .memory-grid { max-width: 280px; }
+            .mem-card { font-size: 1.3rem; min-height: 55px; }
+
+            .record-controls button { width: 100%; max-width: 220px; margin: 0 auto; }
+
+            .form-group input, .form-group select, .form-group textarea {
+                font-size: 16px; padding: 14px;
+            }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .lightbox-nav, .lightbox-close { width: 42px; height: 42px; }
+
+            footer { padding: 35px 0 16px; }
+        }
+
+        @media (max-width: 360px) {
+            .center-name { font-size: 0.9rem; }
+            .hero-slider { height: 340px; }
+            .slide-content h1 { font-size: 1.2rem; }
+            .piano .key { width: 26px; height: 64px; font-size: 0.5rem; }
+            .memory-grid { max-width: 260px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">پرش به محتوای اصلی</a>
+
+<!-- ========== Header ========== -->
+<header role="banner">
+    <div class="container header-inner">
+        <div class="brand">
+            <img src="https://drive.google.com/uc?export=view&id=1XNZsCSVGg98snrvJM4oGQOpjT74hTQ-d"
+                 alt="لوگوی مرکز نگین" class="brand-logo"
+                 onerror="this.src='https://via.placeholder.com/100x50/0057B8/FFFFFF?text=NEGIN'">
+            <div class="brand-text">
+                <span class="institution-name">مؤسسه‌ی خدماتی و حرفوی زنان بی‌بضاعت</span>
+                <div class="center-name">مرکز آموزشی و توانبخشی نگین</div>
+                <span class="slogan-header">«با اراده می‌توان، با همت می‌سازیم»</span>
+            </div>
+        </div>
+
+        <button class="mobile-menu-btn" aria-label="منو" aria-expanded="false" onclick="toggleMenu()">
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </button>
+
+        <nav role="navigation" aria-label="منوی اصلی">
+            <ul id="main-menu">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#about">درباره ما</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#gallery">گالری</a></li>
+                <li><a href="#art">هنر و خلاقیت</a></li>
+                <li><a href="#team">تیم ما</a></li>
+                <li><a href="#registration">ثبت‌نام</a></li>
+                <li><a href="#contact">تماس</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <!-- Hero Slider -->
+    <section id="home" class="hero-slider" role="region" aria-label="اسلایدر">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb707958?w=1200&h=600&fit=crop" class="slide-image" alt="" loading="eager">
+                <div class="slide-content">
+                    <h1>با اراده می‌توان، با همت می‌سازیم</h1>
+                    <p>مرکز آموزشی و توانبخشی نگین؛ خانه‌ای امن برای کودکان دارای معلولیت</p>
+                    <a href="#registration" class="btn btn-gold">ثبت‌نام</a>
+                    <a href="#about" class="btn btn-green">درباره ما</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=1200&h=600&fit=crop" class="slide-image" alt="" loading="lazy">
+                <div class="slide-content">
+                    <h1>آموزش تخصصی</h1>
+                    <p>برنامه‌های فردی‌سازی‌شده برای هر کودک</p>
+                    <a href="#services" class="btn btn-gold">خدمات</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1544779493-aa344a6ddaac?w=1200&h=600&fit=crop" class="slide-image" alt="" loading="lazy">
+                <div class="slide-content">
+                    <h1>توانبخشی حرفه‌ای</h1>
+                    <p>فیزیوتراپی، کاردرمانی و گفتاردرمانی</p>
+                    <a href="#contact" class="btn btn-gold">تماس با ما</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&h=600&fit=crop" class="slide-image" alt="" loading="lazy">
+                <div class="slide-content">
+                    <h1>هنر و خلاقیت</h1>
+                    <p>نقاشی، موسیقی، ضبط صدا و بازی</p>
+                    <a href="#art" class="btn btn-gold">ورود به بخش هنر</a>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)" aria-label="قبلی"><i class="fas fa-chevron-right"></i></button>
+        <button class="slider-btn next" onclick="changeSlide(1)" aria-label="بعدی"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-dots">
+            <button class="dot active" onclick="goToSlide(0)"></button>
+            <button class="dot" onclick="goToSlide(1)"></button>
+            <button class="dot" onclick="goToSlide(2)"></button>
+            <button class="dot" onclick="goToSlide(3)"></button>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>درباره مرکز نگین</h2>
+                <p>خانه‌ای امن برای کودکان دارای معلولیت</p>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <p>مرکز آموزشی و توانبخشی نگین، ثمره‌ی سال‌ها عشق و تلاش <strong>اسدالله حیدری</strong> و <strong>شفیق ساحل</strong> است که با همراهی <strong>اجمیر خان میرزاد</strong> به خانه‌ای امن برای کودکان دارای معلولیت در کابل تبدیل شده است.</p>
+                    <p>ما باور داریم هیچ کودکی نباید به خاطر تفاوت‌هایش از آموزش و فرصت‌های زندگی محروم بماند.</p>
+                    <p style="color: var(--magenta); font-weight: 700; margin-top: 14px;">«با اراده می‌توان، با همت می‌سازیم»</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop" alt="مرکز نگین" style="border-radius: 14px;" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section-padding" style="background: var(--bg);">
+        <div class="container">
+            <div class="section-title"><h2>خدمات ما</h2></div>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>آموزش تخصصی</h3>
+                    <p>برنامه‌های فردی‌سازی‌شده برای شکوفایی ظرفیت هر کودک.</p>
+                </div>
+                <div class="card" style="border-top-color: var(--green);">
+                    <i class="fas fa-hand-holding-heart" style="color: var(--green);"></i>
+                    <h3>توانبخشی</h3>
+                    <p>فیزیوتراپی، کاردرمانی و گفتاردرمانی.</p>
+                </div>
+                <div class="card" style="border-top-color: var(--magenta);">
+                    <i class="fas fa-users" style="color: var(--magenta);"></i>
+                    <h3>حمایت خانواده</h3>
+                    <p>مشاوره و آموزش والدین.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>گالری تصاویر</h2>
+                <p>لحظه‌هایی از فعالیت‌ها و فضای مرکز</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb707958?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1503454537195-1dcabb707958?w=1200&h=900&fit=crop"
+                         alt="یادگیری و رشد" loading="lazy" width="400" height="300">
+                    <div class="caption">یادگیری و رشد</div>
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1588072432836-e10032774350?w=1200&h=900&fit=crop"
+                         alt="کلاس آموزشی" loading="lazy" width="400" height="300">
+                    <div class="caption">کلاس‌های آموزشی</div>
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1544779493-aa344a6ddaac?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1544779493-aa344a6ddaac?w=1200&h=900&fit=crop"
+                         alt="فعالیت گروهی" loading="lazy" width="400" height="300">
+                    <div class="caption">فعالیت‌های گروهی</div>
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&h=900&fit=crop"
+                         alt="هنر و خلاقیت" loading="lazy" width="400" height="300">
+                    <div class="caption">هنر و خلاقیت</div>
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&h=900&fit=crop"
+                         alt="فضای مرکز" loading="lazy" width="400" height="300">
+                    <div class="caption">فضای امن مرکز</div>
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef042b0f0a?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1577896851231-70ef042b0f0a?w=1200&h=900&fit=crop"
+                         alt="بازی و یادگیری" loading="lazy" width="400" height="300">
+                    <div class="caption">بازی و یادگیری</div>
+                </div>
+                <div class="gallery-item" data-index="6">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=900&fit=crop"
+                         alt="فعالیت روزانه" loading="lazy" width="400" height="300">
+                    <div class="caption">فعالیت‌های روزانه</div>
+                </div>
+                <div class="gallery-item" data-index="7">
+                    <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=400&h=300&fit=crop" 
+                         data-full="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=1200&h=900&fit=crop"
+                         alt="حمایت و مراقبت" loading="lazy" width="400" height="300">
+                    <div class="caption">حمایت و مراقبت</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="مشاهده تصویر">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="بستن">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="changeLightbox(-1)" aria-label="قبلی">›</button>
+        <img id="lightboxImg" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="changeLightbox(1)" aria-label="بعدی">‹</button>
+    </div>
+
+    <!-- Art & Creativity -->
+    <section id="art" class="section-padding art-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>هنر و خلاقیت</h2>
+                <p>نقاشی، موسیقی، ضبط صدا و بازی‌های آموزشی</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="paint">نقاشی</button>
+                <button class="tab-btn" data-tab="music">موسیقی و ضبط</button>
+                <button class="tab-btn" data-tab="games">بازی‌ها</button>
+            </div>
+
+            <!-- Paint -->
+            <div id="paint" class="tab-content active">
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">نقاشی آزاد</h3>
+                    <div class="color-picker">
+                        <button style="background:#e74c3c" data-color="#e74c3c" class="active"></button>
+                        <button style="background:#e67e22" data-color="#e67e22"></button>
+                        <button style="background:#f1c40f" data-color="#f1c40f"></button>
+                        <button style="background:#2ecc71" data-color="#2ecc71"></button>
+                        <button style="background:#3498db" data-color="#3498db"></button>
+                        <button style="background:#9b59b6" data-color="#9b59b6"></button>
+                        <button style="background:#1e293b" data-color="#1e293b"></button>
+                        <button style="background:#ffffff; border:2px solid #999" data-color="#ffffff"></button>
+                    </div>
+                    <div style="text-align:center; margin:10px 0; font-size:0.9rem;">
+                        اندازه قلم: <span id="brushSizeLabel">8</span>
+                        <input type="range" id="brushSize" min="2" max="30" value="8" style="width:130px; vertical-align:middle;">
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="paintCanvas" width="600" height="360"></canvas>
+                    </div>
+                    <div class="toolbar">
+                        <button class="btn-undo" onclick="undoCanvas()">↩ برگردان</button>
+                        <button class="btn-clear" onclick="clearCanvas()">پاک کردن</button>
+                        <button class="btn-download" onclick="downloadCanvas()">دانلود</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music + Recording -->
+            <div id="music" class="tab-content">
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 12px;">پیانو ساده</h3>
+                    <div class="piano">
+                        <div class="key key-do" onclick="playNote('do')">دو</div>
+                        <div class="key key-re" onclick="playNote('re')">ر</div>
+                        <div class="key key-mi" onclick="playNote('mi')">می</div>
+                        <div class="key key-fa" onclick="playNote('fa')">فا</div>
+                        <div class="key key-sol" onclick="playNote('sol')">سل</div>
+                        <div class="key key-la" onclick="playNote('la')">لا</div>
+                        <div class="key key-si" onclick="playNote('si')">سی</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px; border-top-color: #e74c3c;">
+                    <h3 style="color: #e74c3c; margin-bottom: 10px;"><i class="fas fa-microphone"></i> ضبط صدا</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 12px;">
+                        صدای خود را ضبط و پخش کنید (مناسب تمرین گفتار).
+                    </p>
+                    <div class="record-box">
+                        <div class="record-status" id="recordStatus">آماده برای ضبط</div>
+                        <div class="record-controls">
+                            <button class="btn-record" id="recordBtn" onclick="toggleRecording()">🎙 شروع ضبط</button>
+                            <button class="btn-play-rec" id="playRecBtn" onclick="playRecording()" disabled>▶ پخش</button>
+                            <button class="btn-stop-rec" id="stopRecBtn" onclick="stopRecording()" style="display:none;">⏹ توقف</button>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--muted); margin-top: 12px;">
+                            اجازه دسترسی به میکروفون را در مرورگر تأیید کنید.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games -->
+            <div id="games" class="tab-content">
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">بازی حافظه</h3>
+                    <p id="memoryStatus" style="text-align:center; font-weight:600; color: var(--primary);">تطابق‌ها: ۰ از ۸</p>
+                    <div class="memory-grid" id="memoryGrid"></div>
+                    <div style="text-align:center; margin-top:14px;">
+                        <button class="btn btn-gold" onclick="initMemory()">شروع دوباره</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section-padding">
+        <div class="container">
+            <div class="section-title"><h2>تیم ما</h2></div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>اسدالله حیدری</h3>
+                    <p style="color: var(--primary); font-weight:600;">بنیان‌گذار و مدیر اجرایی</p>
+                </div>
+                <div class="card" style="border-top-color: var(--gold);">
+                    <h3>اجمیر خان میرزاد</h3>
+                    <p style="color: var(--gold); font-weight:600;">مشاور ارشد و حامی کلیدی</p>
+                </div>
+                <div class="card" style="border-top-color: var(--green);">
+                    <h3>شفیق ساحل</h3>
+                    <p style="color: var(--green); font-weight:600;">بنیان‌گذار و مدیر آموزشی</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="registration" class="section-padding" style="background: var(--bg);">
+        <div class="container">
+            <div class="section-title"><h2>ثبت‌نام</h2></div>
+            <div class="card" style="max-width:700px; margin:0 auto; border-top-color: var(--magenta);">
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>نام والد / سرپرست <span class="required">*</span></label>
+                            <input type="text" name="parent_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>شماره تماس <span class="required">*</span></label>
+                            <input type="tel" name="phone" required placeholder="۰۷۸۶۸۳۸۰۰۲">
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>نام کودک <span class="required">*</span></label>
+                            <input type="text" name="child_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>سن کودک</label>
+                            <input type="number" name="child_age" min="1" max="18">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>توضیحات</label>
+                        <textarea name="message" rows="3"></textarea>
+                    </div>
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-gold">ارسال درخواست</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-title"><h2>تماس با ما</h2></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>آدرس</strong><br>
+                            سرک ۳۷، پروژه وزیر آباد، کابل، افغانستان<br>
+                            <a href="https://maps.app.goo.gl/UTwdrbUfqR6ewS9D9" target="_blank" style="color:var(--primary); font-size:0.9rem;">مشاهده روی نقشه</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div><strong>تلفن</strong><br><a href="tel:+93786838002">۰۷۸۶۸۳۸۰۰۲</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>ایمیل</strong><br><a href="mailto:negineducationcenter@gmail.com">negineducationcenter@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>ساعات کاری</strong><br>
+                            شنبه تا چهارشنبه: ۸ صبح تا ۴ بعدازظهر<br>
+                            پنجشنبه: ۸ صبح تا ۱۲ ظهر
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="border-top-color: var(--green);">
+                    <h3>پیام سریع</h3>
+                    <p style="margin-bottom:14px; color:var(--muted);">از طریق واتساپ با ما در ارتباط باشید.</p>
+                    <a href="https://wa.me/93786838002" class="btn btn-green" target="_blank">
+                        <i class="fab fa-whatsapp"></i> واتساپ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>مرکز نگین</h3>
+                <p>زیر چتر مؤسسه خدماتی و حرفوی زنان بی‌بضاعت</p>
+                <p style="color:var(--gold); font-weight:700; margin-top:8px;">«با اراده می‌توان، با همت می‌سازیم»</p>
+            </div>
+            <div class="footer-col">
+                <h3>لینک‌ها</h3>
+                <a href="#home">خانه</a>
+                <a href="#about">درباره ما</a>
+                <a href="#services">خدمات</a>
+                <a href="#gallery">گالری</a>
+                <a href="#art">هنر و خلاقیت</a>
+                <a href="#contact">تماس</a>
+            </div>
+            <div class="footer-col">
+                <h3>تماس</h3>
+                <p>سرک ۳۷، پروژه وزیر آباد، کابل</p>
+                <p><a href="tel:+93786838002">۰۷۸۶۸۳۸۰۰۲</a></p>
+                <p><a href="mailto:negineducationcenter@gmail.com">negineducationcenter@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            © ۱۴۰۵ مرکز آموزشی و توانبخشی نگین — خانه‌ای برای عشق، فرصتی برای زندگی
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ========== Mobile Menu ==========
+    function toggleMenu() {
+        const menu = document.getElementById('main-menu');
+        const btn = document.querySelector('.mobile-menu-btn');
+        const open = menu.classList.toggle('active');
+        btn.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open);
+    }
+    document.querySelectorAll('#main-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('main-menu').classList.remove('active');
+            document.querySelector('.mobile-menu-btn').classList.remove('active');
+        });
+    });
+
+    // ========== Hero Slider ==========
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    function show(i) {
+        if (i >= slides.length) current = 0;
+        else if (i < 0) current = slides.length - 1;
+        else current = i;
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === current));
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+    }
+    function changeSlide(s) { show(current + s); }
+    function goToSlide(i) { show(i); }
+    setInterval(() => changeSlide(1), 6500);
+
+    // ========== Tabs ==========
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+
+    // ========== Gallery + Lightbox ==========
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentLightboxIndex = 0;
+    const fullImages = Array.from(galleryItems).map(item => item.querySelector('img').dataset.full);
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+    });
+
+    function openLightbox(index) {
+        currentLightboxIndex = index;
+        lightboxImg.src = fullImages[index];
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+    }
+    function changeLightbox(dir) {
+        currentLightboxIndex = (currentLightboxIndex + dir + fullImages.length) % fullImages.length;
+        lightboxImg.src = fullImages[currentLightboxIndex];
+    }
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') changeLightbox(-1);
+        if (e.key === 'ArrowLeft') changeLightbox(1);
+    });
+
+    // ========== Painting ==========
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false, color = '#e74c3c', lastX = 0, lastY = 0, history = [], histIdx = -1;
+
+    document.querySelectorAll('.color-picker button').forEach(b => {
+        b.addEventListener('click', function() {
+            document.querySelectorAll('.color-picker button').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+            color = this.dataset.color;
+        });
+    });
+    document.getElementById('brushSize').addEventListener('input', function() {
+        document.getElementById('brushSizeLabel').textContent = this.value;
+    });
+
+    function getPos(e) {
+        const r = canvas.getBoundingClientRect();
+        const sx = canvas.width / r.width, sy = canvas.height / r.height;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: (clientX - r.left) * sx, y: (clientY - r.top) * sy };
+    }
+    function start(e) { e.preventDefault(); drawing = true; const p = getPos(e); lastX = p.x; lastY = p.y; save(); }
+    function draw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        const p = getPos(e);
+        ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(p.x, p.y);
+        ctx.strokeStyle = color; ctx.lineWidth = document.getElementById('brushSize').value;
+        ctx.lineCap = 'round'; ctx.stroke();
+        lastX = p.x; lastY = p.y;
+    }
+    function stop() { drawing = false; }
+    canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stop); canvas.addEventListener('mouseleave', stop);
+    canvas.addEventListener('touchstart', start, {passive: false});
+    canvas.addEventListener('touchmove', draw, {passive: false});
+    canvas.addEventListener('touchend', stop);
+
+    function save() {
+        if (history.length > 20) { history.shift(); histIdx--; }
+        history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        histIdx = history.length - 1;
+    }
+    function undoCanvas() { if (histIdx <= 0) return; histIdx--; ctx.putImageData(history[histIdx], 0, 0); }
+    function clearCanvas() { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height); save(); }
+    function downloadCanvas() {
+        const a = document.createElement('a'); a.download = 'naghashi-negin.png'; a.href = canvas.toDataURL(); a.click();
+    }
+    clearCanvas();
+
+    // ========== Piano ==========
+    function playNote(note) {
+        const freq = { do:261.63, re:293.66, mi:329.63, fa:349.23, sol:392, la:440, si:493.88 };
+        try {
+            const ac = new (window.AudioContext || window.webkitAudioContext)();
+            const o = ac.createOscillator(); const g = ac.createGain();
+            o.connect(g); g.connect(ac.destination);
+            o.frequency.value = freq[note]; o.type = 'sine'; g.gain.value = 0.25;
+            o.start(); o.stop(ac.currentTime + 0.3);
+        } catch(e) {}
+    }
+
+    // ========== Voice Recording ==========
+    let mediaRecorder = null, audioChunks = [], isRecording = false, audioBlob = null;
+    const recordBtn = document.getElementById('recordBtn');
+    const playRecBtn = document.getElementById('playRecBtn');
+    const stopRecBtn = document.getElementById('stopRecBtn');
+    const recordStatus = document.getElementById('recordStatus');
+
+    function toggleRecording() { isRecording ? stopRecording() : startRecording(); }
+
+    function startRecording() {
+        if (!navigator.mediaDevices?.getUserMedia) {
+            recordStatus.textContent = 'میکروفون پشتیبانی نمی‌شود';
+            return;
+        }
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+                mediaRecorder.onstop = () => {
+                    audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    playRecBtn.disabled = false;
+                    recordStatus.textContent = 'ضبط تمام شد — پخش کنید';
+                    isRecording = false;
+                    recordBtn.classList.remove('recording');
+                    recordBtn.textContent = '🎙 شروع ضبط';
+                    stopRecBtn.style.display = 'none';
+                    stream.getTracks().forEach(t => t.stop());
+                };
+                mediaRecorder.start();
+                isRecording = true;
+                recordBtn.classList.add('recording');
+                recordBtn.textContent = '⏹ در حال ضبط...';
+                stopRecBtn.style.display = 'inline-block';
+                playRecBtn.disabled = true;
+                recordStatus.textContent = 'در حال ضبط... صحبت کنید';
+            })
+            .catch(() => { recordStatus.textContent = 'اجازه دسترسی به میکروفون داده نشد'; });
+    }
+
+    function stopRecording() { if (mediaRecorder && isRecording) mediaRecorder.stop(); }
+
+    function playRecording() {
+        if (!audioBlob) { recordStatus.textContent = 'هنوز صدایی ضبط نشده'; return; }
+        const audio = new Audio(URL.createObjectURL(audioBlob));
+        audio.play();
+        recordStatus.textContent = 'در حال پخش...';
+        audio.onended = () => { recordStatus.textContent = 'پخش تمام شد'; };
+    }
+
+    // ========== Memory Game ==========
+    const emojis = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼'];
+    let cards = [], flipped = [], matched = [], locked = false;
+    function initMemory() {
+        const grid = document.getElementById('memoryGrid');
+        grid.innerHTML = '';
+        const list = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+        cards = list; flipped = []; matched = []; locked = false;
+        list.forEach((e, i) => {
+            const d = document.createElement('div');
+            d.className = 'mem-card'; d.textContent = '❓';
+            d.onclick = () => flip(i);
+            grid.appendChild(d);
+        });
+        document.getElementById('memoryStatus').textContent = 'تطابق‌ها: ۰ از ۸';
+    }
+    function flip(i) {
+        if (locked) return;
+        const els = document.querySelectorAll('.mem-card');
+        const c = els[i];
+        if (c.classList.contains('flipped') || c.classList.contains('matched')) return;
+        c.textContent = cards[i]; c.classList.add('flipped');
+        flipped.push(i);
+        if (flipped.length === 2) {
+            locked = true;
+            const [a, b] = flipped;
+            if (cards[a] === cards[b]) {
+                els[a].classList.add('matched'); els[b].classList.add('matched');
+                matched.push(a, b);
+                document.getElementById('memoryStatus').textContent = 'تطابق‌ها: ' + (matched.length/2) + ' از ۸';
+                flipped = []; locked = false;
+                if (matched.length === 16) setTimeout(() => alert('🎉 همه جفت‌ها پیدا شد!'), 300);
+            } else {
+                setTimeout(() => {
+                    els[a].textContent = '❓'; els[a].classList.remove('flipped');
+                    els[b].textContent = '❓'; els[b].classList.remove('flipped');
+                    flipped = []; locked = false;
+                }, 650);
+            }
+        }
+    }
+    initMemory();
+</script>
+</body>
+</html>
